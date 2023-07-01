@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-        registry = "dockerqprofiles/j2k"
+        registry = "dockerqprofiles/j2k:1.0.0"
         registryCredential = 'DockerHubCreds' 
   }
 
@@ -18,7 +18,7 @@ pipeline {
     stage('Build image') {
       steps{
         script {
-          dockerImage = docker.build registry + "latest"
+          dockerImage = docker.build registry
         }
       }
     }
