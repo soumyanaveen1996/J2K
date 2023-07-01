@@ -1,8 +1,8 @@
 pipeline {
 
   environment {
-    dockerimagename = "dockerqprofiles/j2k"
-    dockerImage = ""
+        registry = "dockerqprofiles/j2k"
+        registryCredential = 'DockerHubCreds' 
   }
 
   agent any
@@ -18,7 +18,7 @@ pipeline {
     stage('Build image') {
       steps{
         script {
-          dockerImage = docker.build dockerimagename
+          dockerImage = docker.build registry + "latest"
         }
       }
     }
@@ -30,7 +30,7 @@ pipeline {
       steps{
         script {
           docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
-            dockerImage.push("1.0.0")
+            dockerImage.push()
           }
         }
       }
