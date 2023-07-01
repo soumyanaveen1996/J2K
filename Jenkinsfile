@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    dockerimagename = "qprofiles/j2k"
+    dockerimagename = "dockerqprofiles/j2k"
     dockerImage = ""
   }
 
@@ -25,7 +25,7 @@ pipeline {
 
     stage('Pushing Image') {
       environment {
-               registryCredential = 'dockerhub-credentials'
+               registryCredential = 'DockerHubCreds'
            }
       steps{
         script {
