@@ -15,7 +15,7 @@ spec:
         app: j2k-react-app 
     spec:
       containers:
-      - name: react-app #The name of the react.js application container
+      - name: j2k-react-app #The name of the react.js application container
         image: dockerqprofiles/j2k:1.0.0 #The Docker image for building the React.js application container:
         ports:
         - containerPort: 3000 #The port for the React.js application   container
