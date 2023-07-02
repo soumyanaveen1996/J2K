@@ -7,6 +7,6 @@ spec:
     app: j2k-react-app 
   type: LoadBalancer #Type of the Kubernetes Service
   ports:
-  - protocol: TCP
+  - protocol: http
     port: 3000 #Service port
     targetPort: 3000 #The port for the React.js application container
