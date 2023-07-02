@@ -41,7 +41,6 @@ pipeline {
         script {
           sh "kubectl apply -f ./deployment.yaml -n qp"
           sh "kubectl apply -f ./service.yaml -n qp"
-          sh "kubectl port-forward svc/j2k-service 30532:3000 -n qp &"
         }
       }
     }
