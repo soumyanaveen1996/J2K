@@ -6,7 +6,9 @@ pipeline {
   }
 
   agent {
-    j2k-worker-node
+    node {
+        label 'j2k-worker-node'
+    }
   }
 
   stages {
