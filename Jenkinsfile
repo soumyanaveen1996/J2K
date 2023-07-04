@@ -5,7 +5,7 @@ pipeline {
         registryCredential = 'DockerHubCreds' 
   }
 
-  agent "j2k-worker-node"
+  agent j2k-worker-node
 
   stages {
 
