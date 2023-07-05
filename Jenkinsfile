@@ -1,21 +1,17 @@
 pipeline {
 
   environment {
-        registry = "dockerqprofiles/j2k:1.0.0"
-        registryCredential = 'DockerHubCreds' 
+        registry = "soumyanaveen"
+        registryCredential = 'dockerhub' 
   }
 
-  agent {
-    node {
-        label 'j2k-worker-node'
-    }
-  }
+ 
 
   stages {
 
     stage('Checkout Source') {
       steps {
-        git branch: 'main', url: 'https://github.com/gitqprofiles/J2K.git'
+        git branch: 'main', url: 'https://github.com/soumyanaveen1996/J2K.git'
       }
     }
 
@@ -29,7 +25,7 @@ pipeline {
 
     stage('Pushing Image') {
       environment {
-               registryCredential = 'DockerHubCreds'
+               registryCredential = 'docker'
            }
       steps{
         script {
@@ -40,14 +36,7 @@ pipeline {
       }
     }
 
-    stage('Deploying React.js container to Kubernetes') {
-      steps {
-        script {
-          sh "kubectl apply -f ./deployment.yaml -n qp"
-          sh "kubectl apply -f ./service.yaml -n qp"
-        }
-      }
-    }
+  
 
   }
 }
