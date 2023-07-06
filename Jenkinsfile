@@ -40,7 +40,14 @@ pipeline {
       }
     }
 
-  
+    stage('Deploying React.js container to Kubernetes') {
+      steps {
+        script {
+          sh "kubectl apply -f ./deployment.yaml -n qp"
+          sh "kubectl apply -f ./service.yaml -n qp"
+        }
+      }
+    }
 
   }
 }
