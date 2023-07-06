@@ -1,13 +1,13 @@
 pipeline {
 
   environment {
-        registry = "dockerqprofiles/j2k:1.0.0"
-        registryCredential = 'DockerHubCreds' 
+        registry = "soumyanaveen/k8sj:1.0.0"
+        registryCredential = 'dockerhub' 
   }
 
   agent {
     node {
-        label 'j2k-worker-node'
+        label 'k8s'
     }
   }
 
@@ -15,7 +15,7 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git branch: 'main', url: 'https://github.com/gitqprofiles/J2K.git'
+        git branch: 'main', url: 'https://github.com/soumyanaveen1996/J2K.git'
       }
     }
 
@@ -29,7 +29,7 @@ pipeline {
 
     stage('Pushing Image') {
       environment {
-               registryCredential = 'DockerHubCreds'
+               registryCredential = 'dockerhub'
            }
       steps{
         script {
