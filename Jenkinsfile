@@ -7,7 +7,7 @@ pipeline {
 
   agent {
     node {
-        label 'k8s'
+        label 'k8snew'
     }
   }
 
